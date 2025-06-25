@@ -1,12 +1,12 @@
-##TryHackMe - New York Flankees Walkthrough
+## TryHackMe - New York Flankees Walkthrough
 
 `https://tryhackme.com/room/thenewyorkflankees`
 
-#Introduction :
+# Introduction :
 
 This is a walkthrough for the TryHackMe room *New York Flankees*, which focuses on exploiting a web app via padding oracle, gaining reverse shell access to a Docker container, and escalating to root on the host using Docker misconfigurations.
 
-#🔍Reconnaissance  
+# 🔍Reconnaissance  
 
 Start with an Nmap scan:  
 nmap -sC -sV -p- -T4 <ip> -Pn  
@@ -35,12 +35,12 @@ For this we will use a Github Tool *Padre*
 This Tool will Crack the Encryption String for you and will provide username and password. -> Flag 1
 
 
-#Flag 2
+# Flag 2
 
 Try to login to the Site, Now will see a new Menu *Debug*, were you will get your -> Flag 2
 
 
-#Flag 3
+# Flag 3
 
 Now there is option to execute System commands directly. I tried to upload a python shell there using Burp Suite.  
 
@@ -63,7 +63,7 @@ After Executing the Payload I Got a Reverse shell, where you can see a .dockere
 Let's go for third flag which is in the container, For that can go in the app Directory and search there you will find the -> Flag 3
 
 
-#Final Flag
+# Final Flag
 
 So, Now Final Flag. Because it is a docker container lets use a docker enumeration tool called deepce.
 
@@ -84,7 +84,7 @@ Use one of the image id of one of the docker images for the next command to be r
 You Got a root access to the Container. Got -> Flag 4
 
 
-#✅ Conclusion
+# ✅ Conclusion
 
 This room gave solid experience with container breakout techniques and web vulnerabilities.  
 Thanks for reading! Let me know if you have questions!
