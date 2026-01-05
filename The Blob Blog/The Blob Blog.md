@@ -2,7 +2,7 @@
 
 First we start our Enumeration with **Nmap Scan** - *got ports 80 & 22*
 
-![nmap](../images/Pasted image 20260105114259.png)
+![nmap](images/Pasted image 20260105114259.png)
 
 Got nothing in Directory Brute-forcing on ports 80 apache server, but there was some encoded string in the page source.
 
