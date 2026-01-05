@@ -30,7 +30,8 @@ And now we have more open ports available - *8080, 445, 21*
 
 After decoding the string with **Base58**, we got the password.
 
-![](images/Pasted%20image%2020260105115046%201%201.png)
+![](images/Pasted%20image%2020260105115046%201%201.png)  
+
 Then we tried to used above decoded password & username in the ftp server.
 
 ![](images/Pasted%20image%2020260105114842.png)
@@ -46,12 +47,12 @@ After more Recon, we got another hint in the web page on port 445 which was not 
 We used the password and extracted *out.txt* file, which contain a directory location and an encrypted string which look like username:password.
 
 ![](images/Pasted%20image%2020260105115301.png)
+
 ```┌──(root㉿kali)-[/home/kali]
 └─# cat out.txt 
 zcv:p1fd3v3amT@55n0pr
 /bobs_safe_for_stuff
 ```
-
 We visited /bobs_safe_for_stuff location and got a hint there. After some recon we got to know that the encrypted string is a **Vigenere Cipher** and may be the hint we got is the key for that string.
 
 ![](images/Pasted%20image%2020260105115418.png)
@@ -66,14 +67,16 @@ With the extracted credentials, we tried to login on the port 8080. By using fer
 
 There was nothing special in the website, but by seeing the input field, we tried to do command execution.
 
-
 ![](images/Pasted%20image%2020260105120122.png)
+
 And it work's
 
-![](images/Pasted image 20260105120155.png)
+![](images/Pasted%20image%2020260105120155.png)  
+
 So we executed basic bash reverse shell to get the reverse connection from the system.
 
 ![](images/Pasted%20image%2020260105120324.png)
+
 ![](images/Pasted%20image%2020260105120302.png)
 
 ###### Privesc
@@ -87,8 +90,8 @@ find / -perm -u=s 2>/dev/null
 
 We downloaded the blogFeedback Binary file and used cutter tool to decompile it 
 
-
 ![](images/Pasted%20image%2020260105120528.png)
+
 According to the above mention, we pass 6 arguments in reverse order to execute the /bin/sh and get the privilege shell.
 
 ![](images/Pasted%20image%2020260105120631.png)
@@ -114,6 +117,7 @@ So we checked if we have permission to write into the file and We have that.
 So we searched for a Reverse Shell Code in C language and removed the C file from the target machine and placed our shell code with the same name.
 
 ![](images/Pasted%20image%2020260105121101.png)
+
 And we got the shell with root privilege and also we got our Root Flag.
 
 
